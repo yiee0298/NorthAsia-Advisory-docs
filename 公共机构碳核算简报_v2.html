@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>政策简报 | 公共机构碳排放核算</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+
+  :root {
+    --ink: #1a1a24;
+    --paper: #ffffff;
+    --accent: #c0392b;
+    --accent-light: #e8d5d3;
+    --rule: #2c3e50;
+    --muted: #6b6b7a;
+    --highlight: #f0e6c0;
+    --border: #d4cfc6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    padding: 48px 24px;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding-left: 120px;
+  }
+
+  /* Header */
+  .masthead {
+    border-top: 4px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 20px 0 16px;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .masthead-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .issue-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .masthead-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+  }
+
+  .masthead-meta {
+    text-align: right;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .red-tag {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    padding: 2px 8px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  /* Lede */
+  .lede {
+    background: var(--highlight);
+    border-left: 3px solid var(--accent);
+    padding: 18px 20px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    line-height: 1.9;
+    color: var(--ink);
+  }
+
+  .lede strong {
+    font-weight: 600;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 36px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    min-width: 28px;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--rule);
+    letter-spacing: 0.05em;
+  }
+
+  .body-text {
+    font-size: 13.5px;
+    line-height: 1.95;
+    color: #2d2d3a;
+    margin-bottom: 12px;
+  }
+
+  /* Policy chain table */
+  .chain-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-top: 8px;
+  }
+
+  .chain-table th {
+    background: var(--rule);
+    color: white;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .chain-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.7;
+  }
+
+  .chain-table tr:nth-child(even) td {
+    background: rgba(0,0,0,0.02);
+  }
+
+  .chain-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .chain-table td:first-child {
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--rule);
+    min-width: 80px;
+  }
+
+  /* Doc links */
+  .doc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  .doc-item {
+    border: 1px solid var(--border);
+    padding: 12px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: white;
+    transition: border-color 0.15s;
+  }
+
+  .doc-item:hover {
+    border-color: var(--accent);
+  }
+
+  .doc-icon {
+    width: 28px;
+    height: 28px;
+    background: var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .doc-icon svg {
+    width: 14px;
+    height: 14px;
+    fill: white;
+  }
+
+  .doc-body {}
+
+  .doc-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .doc-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 4px;
+  }
+
+  .doc-meta {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+
+  .doc-relevance {
+    font-size: 12px;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 6px;
+    padding: 6px 8px;
+    background: #f8f8f8;
+    border-left: 2px solid var(--border);
+  }
+
+  .doc-link {
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-light);
+    word-break: break-all;
+  }
+
+  .doc-link:hover {
+    border-bottom-color: var(--accent);
+  }
+
+  /* Opportunity box */
+  .opportunity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .opp-card {
+    border: 1px solid var(--border);
+    padding: 14px;
+    background: white;
+  }
+
+  .opp-card-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--rule);
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .opp-card-body {
+    font-size: 12px;
+    color: #444;
+    line-height: 1.7;
+  }
+
+  .opp-card.priority {
+    border-color: var(--rule);
+    border-left: 3px solid var(--accent);
+  }
+
+  /* Highlight note */
+  .note-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--rule);
+    padding: 14px 16px;
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: #333;
+    line-height: 1.8;
+  }
+
+  .note-box strong {
+    color: var(--rule);
+    font-weight: 600;
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+/* 导航栏 */
+.nav-sidebar {
+  position: fixed;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 100;
+}
+
+.nav-sidebar a {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-left: 2px solid var(--border);
+  letter-spacing: 0.05em;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.nav-sidebar a:hover {
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+
+  a { color: inherit; }
+
+  @media (max-width: 600px) {
+    .opportunity-grid { grid-template-columns: 1fr; }
+    .masthead { flex-direction: column; gap: 8px; align-items: flex-start; }
+    .masthead-meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav-sidebar">
+  <a href="#s1">01 政策链条</a>
+  <a href="#s2">02 潜在BD对象</a>
+  <a href="#s3">03 业务切入点</a>
+  <a href="#s4">04 相关文件</a>
+</nav>
+<div class="page">
+
+  <!-- Masthead -->
+  <div class="masthead">
+    <div class="masthead-left">
+      <span class="issue-label">北方亚事 North Asia · 内部政策简报</span>
+      <div class="masthead-title">公共机构碳排放核算 · 政策与业务机会</div>
+    </div>
+    <div class="masthead-meta">
+      <div><span class="red-tag">新标准</span></div>
+      JS/T 303—2026<br>
+      2026年5月整理
+    </div>
+  </div>
+
+  <!-- Lede -->
+  <div class="lede">
+    <strong>JS/T 303—2026《公共机构碳排放核算指南》</strong>于2026年4月1日正式实施，是国管局发起的公共机构碳排放考核的统一核算口径。国务院已明确"十四五"末公共机构单位建筑面积碳排放须较2020年降低7%，"十五五"总量与强度双控指标正在制定中。各机构目前普遍没有碳账本，短期内存在建账需求。
+  </div>
+
+  <!-- Section 1: Policy Chain -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title" id="s1">政策链条</span>
+    </div>
+    <table class="chain-table">
+      <thead>
+        <tr>
+          <th>层级</th>
+          <th>文件</th>
+          <th>与本标准的关联</th>
+          <th>发布时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>两办意见</td>
+          <td>《关于更高水平更高质量做好节能降碳工作的意见》</td>
+          <td>最新上位文件，要求深化公共机构节能降碳、完善能耗定额管理，是本标准的政治背书</td>
+          <td>2026年4月</td>
+        </tr>
+        <tr>
+          <td>国务院方案</td>
+          <td>《2024—2025年节能降碳行动方案》（国发〔2024〕12号）</td>
+          <td>提出公共机构单位建筑面积碳排放较2020年降低<strong>7%</strong>的量化目标，考核结果须报同级政府</td>
+          <td>2024年5月</td>
+        </tr>
+        <tr>
+          <td>国管局部署</td>
+          <td>《国管局2026年公共机构节约能源资源工作安排》</td>
+          <td>明确本年度将以JS/T 303为依据，测算下达"十五五"碳排放双控指标并制定考核方案</td>
+          <td>2026年1月</td>
+        </tr>
+        <tr>
+          <td>执行标准</td>
+          <td>JS/T 303—2026《公共机构碳排放核算指南》</td>
+          <td>考核的计算口径，覆盖化石燃料直接排放＋外购电力/热力间接排放，附31省电网排放因子</td>
+          <td>2026年2月</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 2: BD Targets -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title" id="s2">潜在BD对象</span>
+    </div>
+    <p class="body-text">标准适用主体为"全部或部分使用财政资金的国家机关、事业单位和团体组织"。以下两类机构在节能降碳方面历史参与度较高，合作意愿相对较强：</p>
+    <div class="opportunity-grid">
+      <div class="opp-card">
+        <div class="opp-card-title">高校</div>
+        <div class="opp-card-body">厦门大学、江西中医药大学、西安建筑科技大学等已入选国管局"公共机构能效领跑者"，有主动建账意愿；且高校体量大、能耗品种多（暖通、食堂、实验室），核算工作量相对可量化收费。</div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-card-title">医院</div>
+        <div class="opp-card-body">国管局已将医院列为绿色低碳转型专项课题方向，柳州市人民医院、乐山市妇幼保健院等已有创建案例。医院用能结构复杂（蒸汽、医疗设备用电），排放核算专业门槛高，外部咨询需求明确。</div>
+      </div>
+    </div>
+    <div class="note-box">
+      <strong>渠道建议：</strong>各省机关事务管理部门是主管单位，负责辖区内公共机构考核落实。从省级机关事务局切入，可批量触达下属机构；广东省对口部门为广东省能源局（国管局文件中专列）。
+    </div>
+  </div>
+
+  <!-- Section 3: Business Opportunity -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title" id="s3">业务切入点</span>
+    </div>
+    <p class="body-text">结合北方亚事ESG咨询定位，切入路径按客户实际需求顺序排列：</p>
+    <div class="opportunity-grid">
+      <div class="opp-card priority">
+        <div class="opp-card-title">① 考核应对辅导　【优先级最高】</div>
+        <div class="opp-card-body">"十五五"考核方案落地后，协助客户理解指标口径、完成国管局信息平台填报、规避数据质量问题。门槛低、需求急、可批量复制。</div>
+      </div>
+      <div class="opp-card priority">
+        <div class="opp-card-title">② 碳排放摸底核算</div>
+        <div class="opp-card-body">按JS/T 303方法论梳理排放源，整合能源账单、热量表等原始数据，出具首次核算报告。是后续路径规划的前提，也是最直接的单次交付物。</div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-card-title">③ 降碳路径规划</div>
+        <div class="opp-card-body">在摸底基础上，结合绿电采购、光伏自发自用等措施，制定"十五五"目标达成方案。属于延伸服务，适合有主动管理意愿的客户。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: Source Documents -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title" id="s4">相关文件</span>
+    </div>
+    <ul class="doc-list">
+
+      <li class="doc-item">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+        </div>
+        <div class="doc-body">
+          <div class="doc-label">行业标准 · 核心文件</div>
+          <div class="doc-name">JS/T 303—2026《公共机构碳排放核算指南》</div>
+          <div class="doc-meta">国家机关事务管理局 | 2026-02-27发布，2026-04-01实施</div>
+          <div class="doc-relevance">规定了核算边界、排放范围（直接＋间接）、计算公式及缺省排放因子，是所有公共机构开展碳核算的操作依据。重点看第6、8章和附录A（省级电网因子表）。</div>
+          <a class="doc-link" href="https://www.ggj.gov.cn/" target="_blank">国家机关事务管理局官网 ggj.gov.cn</a>
+        </div>
+      </li>
+
+      <li class="doc-item">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+        </div>
+        <div class="doc-body">
+          <div class="doc-label">两办意见 · 最新上位文件</div>
+          <div class="doc-name">《关于更高水平更高质量做好节能降碳工作的意见》</div>
+          <div class="doc-meta">中共中央办公厅、国务院办公厅 | 2026年4月</div>
+          <div class="doc-relevance">JS/T 303发布后最新出台的顶层政策，在"公共机构"条目下明确要求降低单位建筑面积碳排放、完善能耗定额管理，并推进《公共机构节能条例》修订。说明该方向在"十五五"仍是政策重点。</div>
+          <a class="doc-link" href="https://www.mee.gov.cn/zcwj/zyygwj/202604/t20260422_1149910.shtml" target="_blank">https://www.mee.gov.cn/zcwj/zyygwj/202604/t20260422_1149910.shtml</a>
+        </div>
+      </li>
+
+      <li class="doc-item">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+        </div>
+        <div class="doc-body">
+          <div class="doc-label">国务院方案 · 量化考核依据</div>
+          <div class="doc-name">《2024—2025年节能降碳行动方案》（国发〔2024〕12号）</div>
+          <div class="doc-meta">国务院 | 2024年5月</div>
+          <div class="doc-relevance">提出"到2025年底公共机构单位建筑面积碳排放较2020年降低7%"的硬性目标，要求各级机关事务管理部门每年将考核结果报同级政府。这是JS/T 303背后的强制考核压力来源。</div>
+          <a class="doc-link" href="https://www.mee.gov.cn/zcwj/gwywj/202405/t20240530_1074495.shtml" target="_blank">https://www.mee.gov.cn/zcwj/gwywj/202405/t20240530_1074495.shtml</a>
+        </div>
+      </li>
+
+      <li class="doc-item">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+        </div>
+        <div class="doc-body">
+          <div class="doc-label">国管局部署 · 2026年执行计划</div>
+          <div class="doc-name">《国管局关于2026年公共机构节约能源资源工作安排的通知》</div>
+          <div class="doc-meta">国家机关事务管理局 | 2026年1月</div>
+          <div class="doc-relevance">直接说明JS/T 303的用途：国管局将以此标准测算"十五五"总量与强度双控指标，并在2026年内制定正式考核方案。同时明确开发信息平台碳核算模块。说明考核机制正在加速落地。</div>
+          <a class="doc-link" href="https://www.ggj.gov.cn/tzgg/202601/t20260129_49015.htm" target="_blank">https://www.ggj.gov.cn/tzgg/202601/t20260129_49015.htm</a>
+        </div>
+      </li>
+
+      <li class="doc-item">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+        </div>
+        <div class="doc-body">
+          <div class="doc-label">发改委方案 · 标准体系背景</div>
+          <div class="doc-name">《关于进一步强化碳达峰碳中和标准计量体系建设行动方案（2024—2025年）》（发改环资〔2024〕1046号）</div>
+          <div class="doc-meta">国家发展改革委 | 2024年8月</div>
+          <div class="doc-relevance">JS/T 303属于该方案"重点行业碳核算标准全覆盖"目标的组成部分。可佐证此类标准的出台是系统性部署而非偶发，后续类似标准仍会持续推出。</div>
+          <a class="doc-link" href="https://www.ndrc.gov.cn/xxgk/zcfb/tz/202408/t20240808_1392291.html" target="_blank">https://www.ndrc.gov.cn/xxgk/zcfb/tz/202408/t20240808_1392291.html</a>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>北方亚事 North Asia</span>
+    <span>整理日期：2026年5月8日</span>
+  </div>
+
+</div>
+</body>
+</html>
